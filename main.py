@@ -88,7 +88,8 @@ def guess_word(session: Session):
         raise HTTPException(status_code=404, detail="I couldn't guess it 😔. Teach me!")
 
     guess = random.choice(possible_words)
-    return {"guess": guess}
+definition = dictionary_db.get(guess, "Definition not found.")
+return {"guess": guess, "definition": definition}
 
 @app.post("/learn_new_word")
 def learn_new_word(word: str, questions: dict):
