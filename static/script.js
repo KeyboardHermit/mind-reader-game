@@ -42,7 +42,7 @@ async function guessWord() {
 
     if (res.ok) {
         const data = await res.json();
-        resultDiv.innerText = `🧠 Are you thinking of: ${data.guess}?`;
+       resultDiv.innerHTML = `🧠 Are you thinking of: <b>${data.guess}</b>?<br>📚 Meaning: ${data.definition}`;
         resultDiv.classList.remove('error');
     } else {
         resultDiv.innerText = "😔 I couldn't guess! Please teach me later.";
